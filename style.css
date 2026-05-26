@@ -1,0 +1,218 @@
+:root {
+    --primary: #00ff88; 
+    --accent: #00d4ff; 
+    --warning: #ffcc00;
+    --danger: #ff4444; 
+    --glass: rgba(10, 10, 10, 0.85); 
+    --black: #050505;
+}
+
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+    font-family: 'Outfit', sans-serif; 
+}
+
+body {
+    background: var(--black) url('img/fundo.jpg') no-repeat center center fixed;
+    background-size: cover; 
+    color: white; 
+    height: 100vh; 
+    overflow: hidden;
+}
+
+/* TELA DE ENTRADA AGRO FORTE */
+#intro {
+    position: fixed; 
+    inset: 0; 
+    background: var(--black); 
+    z-index: 10000;
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center;
+    transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+#intro.hide { 
+    opacity: 0; 
+    visibility: hidden; 
+    transform: scale(1.1); 
+}
+
+.logo-box { 
+    text-align: center; 
+    border-left: 5px solid var(--primary); 
+    padding-left: 30px; 
+}
+#intro h1 { 
+    font-size: 5.5rem; 
+    letter-spacing: 10px; 
+    font-weight: 900; 
+    color: var(--primary); 
+    line-height: 1; 
+    text-transform: uppercase; 
+}
+#intro p { 
+    font-size: 1.3rem; 
+    letter-spacing: 2px; 
+    color: white; 
+    margin-top: 15px; 
+    font-weight: 300; 
+    max-width: 500px; 
+}
+#intro b { 
+    color: var(--primary); 
+}
+
+/* HUD */
+#hud {
+    width: 100%; 
+    padding: 20px 40px; 
+    display: flex; 
+    justify-content: space-between;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent); 
+    position: relative; 
+    z-index: 10;
+}
+.stat-card { 
+    background: var(--glass); 
+    padding: 12px 25px; 
+    border-radius: 20px; 
+    border: 1px solid rgba(255,255,255,0.1); 
+    backdrop-filter: blur(10px);
+    text-align: center; 
+    min-width: 150px;
+}
+.stat-card small { 
+    display: block; 
+    font-size: 0.6rem; 
+    color: var(--accent); 
+    text-transform: uppercase; 
+    letter-spacing: 2px; 
+}
+.stat-card b { 
+    font-size: 1.4rem; 
+    font-weight: 600; 
+}
+
+/* LAYOUT PRINCIPAL */
+main { 
+    display: flex; 
+    height: calc(100vh - 100px); 
+    padding: 20px; 
+    gap: 30px; 
+    align-items: center; 
+    justify-content: center; 
+}
+
+.panel {
+    width: 180px; 
+    background: var(--glass); 
+    border-radius: 35px; 
+    padding: 20px;
+    border: 1px solid rgba(255,255,255,0.05); 
+    display: flex; 
+    flex-direction: column; 
+    gap: 15px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+}
+
+.btn {
+    width: 100%; 
+    padding: 15px; 
+    background: rgba(255,255,255,0.03); 
+    border-radius: 22px;
+    border: 1px solid rgba(255,255,255,0.05); 
+    cursor: pointer; 
+    transition: 0.4s;
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;
+}
+.btn:hover:not(.locked) { 
+    background: rgba(255,255,255,0.1); 
+    border-color: var(--primary); 
+}
+.btn.active { 
+    background: var(--primary); 
+    border-color: var(--primary); 
+    color: var(--black); 
+    box-shadow: 0 0 30px rgba(0,255,136,0.4); 
+}
+.btn.locked { 
+    opacity: 0.1; 
+    cursor: not-allowed; 
+    filter: grayscale(1); 
+}
+.btn span { 
+    font-size: 1.8rem; 
+}
+.btn b { 
+    font-size: 0.7rem; 
+    text-transform: uppercase; 
+    margin-top: 5px; 
+}
+
+/* TERRENO */
+#grid { 
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 20px; 
+}
+.plot {
+    width: 140px; 
+    height: 140px; 
+    background: rgba(0,0,0,0.4); 
+    border-radius: 30px;
+    border: 1px solid rgba(255,255,255,0.1); 
+    position: relative;
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    cursor: pointer; 
+    transition: 0.5s;
+}
+.plot.ready { 
+    border-color: var(--warning); 
+    animation: glow 1s infinite alternate; 
+}
+
+@keyframes glow { 
+    from { box-shadow: 0 0 10px rgba(255,204,0,0.2); } 
+    to { box-shadow: 0 0 30px rgba(255,204,0,0.5); } 
+}
+
+.progress-container { 
+    position: absolute; 
+    bottom: 15px; 
+    width: 75%; 
+    display: flex; 
+    flex-direction: column; 
+    gap: 5px; 
+}
+.bar { 
+    width: 100%; 
+    height: 6px; 
+    background: rgba(0,0,0,0.5); 
+    border-radius: 10px; 
+    overflow: hidden; 
+}
+.fill { 
+    height: 100%; 
+    transition: 0.4s; 
+}
+
+#alert {
+    position: fixed; 
+    top: -100px; 
+    left: 50%; 
+    transform: translateX(-50%);
+    padding: 20px 60px; 
+    border-radius: 100px; 
+    font-weight: 600; 
+    z-index: 1000; 
+    transition: 0.7s;
+    backdrop-filter: blur(15px); 
+    border: 1px solid rgba(255,255,255,0.2);
+}

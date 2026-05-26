@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AGRO FORTE 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;600;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="intro">
+        <div class="logo-box">
+            <h1>AGRO FORTE</h1>
+            <p>Equilíbrio entre <b>produção</b> e <b>meio ambiente</b></p>
+        </div>
+    </div>
+
+    <div id="alert">SISTEMA ATIVO</div>
+
+    <div id="hud">
+        <div class="stat-card"><small>Patrimônio</small><b id="m-val">$100</b></div>
+        <div class="stat-card"><small>Vitalidade Solo</small><b id="s-val">100%</b></div>
+        <div class="stat-card"><small>Nível Atual</small><b id="l-val">1</b></div>
+        <div class="stat-card"><small>Status</small><b id="rank">Iniciante</b></div>
+    </div>
+
+    <main>
+        <div class="panel">
+            <h3 style="font-size: 0.7rem; text-align: center; letter-spacing: 2px;">CULTURAS</h3>
+            <div id="seeds"></div>
+        </div>
+
+        <div id="grid"></div>
+
+        <div class="panel">
+            <h3 style="font-size: 0.7rem; text-align: center; letter-spacing: 2px;">GESTÃO</h3>
+            <div class="btn" onclick="recoverSoil()"><span>🌿</span><b>BIO ADUBO</b><small>$50</small></div>
+            <div class="btn locked" id="drone-btn"><span>🛸</span><b>DRONE IA</b></div>
+            <div class="btn locked" id="lab-btn"><span>🧬</span><b>GENÉTICA</b></div>
+            <p style="font-size: 0.5rem; color: #555; text-align: center; margin-top: auto;">AGRO FORTE © 2026</p>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
